@@ -35,12 +35,6 @@ pipeline {
         bat 'npm prune --omit=dev --legacy-peer-deps'
       }
     }
-
-    // stage('Start Application') {
-    //   steps {
-    //     bat 'npm run start'
-    //   }
-    // }
   }
 
   post {
