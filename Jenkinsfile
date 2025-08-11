@@ -20,25 +20,25 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        sh 'npm install --legacy-peer-deps'
+        bat 'npm install --legacy-peer-deps'
       }
     }
 
     stage('Build') {
       steps {
-        sh 'npm run build'
+        bat 'npm run build'
       }
     }
 
     stage('Prune Dev Dependencies') {
       steps {
-        sh 'npm prune --omit=dev --legacy-peer-deps'
+        bat 'npm prune --omit=dev --legacy-peer-deps'
       }
     }
 
     // stage('Start Application') {
     //   steps {
-    //     sh 'npm run start'
+    //     bat 'npm run start'
     //   }
     // }
   }
