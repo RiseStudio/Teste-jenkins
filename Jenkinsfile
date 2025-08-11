@@ -6,40 +6,10 @@ pipeline {
   }
 
   stages {
-    stage('Checkout') {
+    stage('Verifica Node') {
       steps {
-        checkout([
-          $class: 'GitSCM',
-          branches: [[name: '*/main']],
-          userRemoteConfigs: [[
-            url: 'https://github.com/RiseStudio/Teste-jenkins.git'
-          ]]
-        ])
+        sh 'node --version'
       }
-    }
-
-    stage('Install Dependencies') {
-      steps {
-        sh 'npm install --legacy-peer-deps'
-      }
-    }
-
-    stage('Build') {
-      steps {
-        sh 'npm run build'
-      }
-    }
-
-    stage('Prune Dev Dependencies') {
-      steps {
-        sh 'npm prune --omit=dev --legacy-peer-deps'
-      }
-    }
-  }
-
-  post {
-    always {
-      echo 'Pipeline finalizado.'
     }
   }
 }
